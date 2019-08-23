@@ -1,0 +1,28 @@
+type Query {
+  movies: [Movie]!
+}
+
+type Mutation {
+  createUser(username: String!, password: String!): User!
+}
+
+type Movie {
+  title: String!
+  year: Int!
+  rating: Float!
+  actors: [Person]!
+  directors: [Person]!
+}
+
+type Person {
+  id: ID!
+  name: String!
+  birthday: String
+  country: String!
+}
+
+type User {
+  id: ID!
+  username: String!
+  password: String!
+}
