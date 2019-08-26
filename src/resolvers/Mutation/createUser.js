@@ -1,8 +1,14 @@
-import uuidv4 from 'uuid/v4';
+import messages from '../../utils/messages';
 
-export default function createUser(parent, args, ctx, info) {
-  return {
-    id: uuidv4(),
-    ...args
-  };
+export default async function createUser(parent, args, { prisma }, info) {
+  const isUsernameTaken = await prisma.exists.User({ username: args.username });
+
+  if (isUsernameTaken) throw new Error(messages.errors.createUserUsernameTaken);
+
+  return await prisma.mutation.createUser({
+    data: {
+      username: args.username,
+      password: args.password
+    }
+  }, info);
 }
