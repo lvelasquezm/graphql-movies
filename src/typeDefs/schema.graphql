@@ -12,6 +12,7 @@ type Movie {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   actors: [Person!]!
   directors: [Person!]!
 }
