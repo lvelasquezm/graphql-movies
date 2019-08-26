@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(username: String!, password: String!): User!
+  createUser(username: String!, password: String!): AuthPayload!
 }
 
 type Movie {
@@ -28,4 +28,9 @@ type User {
   id: ID!
   username: String!
   password: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
 }
