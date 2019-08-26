@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Mon Aug 26 2019 13:12:06 GMT-0600 (Central Standard Time)
+# timestamp: Mon Aug 26 2019 16:29:54 GMT-0600 (Central Standard Time)
 
 type AggregateMovie {
   count: Int!
@@ -34,6 +34,7 @@ type Movie implements Node {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   actors(where: PersonWhereInput, orderBy: PersonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Person!]
   directors(where: PersonWhereInput, orderBy: PersonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Person!]
   createdAt: DateTime!
@@ -55,6 +56,7 @@ input MovieCreateInput {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   actors: PersonCreateManyWithoutMoviesPlayedInput
   directors: PersonCreateManyWithoutMoviesDirectedInput
 }
@@ -74,6 +76,7 @@ input MovieCreateWithoutActorsInput {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   directors: PersonCreateManyWithoutMoviesDirectedInput
 }
 
@@ -82,6 +85,7 @@ input MovieCreateWithoutDirectorsInput {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   actors: PersonCreateManyWithoutMoviesPlayedInput
 }
 
@@ -103,6 +107,8 @@ enum MovieOrderByInput {
   year_DESC
   rating_ASC
   rating_DESC
+  scoutbase_rating_ASC
+  scoutbase_rating_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -114,6 +120,7 @@ type MoviePreviousValues {
   title: String!
   year: Int!
   rating: Float!
+  scoutbase_rating: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -251,6 +258,28 @@ input MovieScalarWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Float
+  scoutbase_rating: Float
+
+  """All values that are not equal to given value."""
+  scoutbase_rating_not: Float
+
+  """All values that are contained in given list."""
+  scoutbase_rating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  scoutbase_rating_not_in: [Float!]
+
+  """All values less than the given value."""
+  scoutbase_rating_lt: Float
+
+  """All values less than or equal the given value."""
+  scoutbase_rating_lte: Float
+
+  """All values greater than the given value."""
+  scoutbase_rating_gt: Float
+
+  """All values greater than or equal the given value."""
+  scoutbase_rating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -340,6 +369,7 @@ input MovieUpdateInput {
   title: String
   year: Int
   rating: Float
+  scoutbase_rating: Float
   actors: PersonUpdateManyWithoutMoviesPlayedInput
   directors: PersonUpdateManyWithoutMoviesDirectedInput
 }
@@ -348,12 +378,14 @@ input MovieUpdateManyDataInput {
   title: String
   year: Int
   rating: Float
+  scoutbase_rating: Float
 }
 
 input MovieUpdateManyMutationInput {
   title: String
   year: Int
   rating: Float
+  scoutbase_rating: Float
 }
 
 input MovieUpdateManyWithoutActorsInput {
@@ -389,6 +421,7 @@ input MovieUpdateWithoutActorsDataInput {
   title: String
   year: Int
   rating: Float
+  scoutbase_rating: Float
   directors: PersonUpdateManyWithoutMoviesDirectedInput
 }
 
@@ -396,6 +429,7 @@ input MovieUpdateWithoutDirectorsDataInput {
   title: String
   year: Int
   rating: Float
+  scoutbase_rating: Float
   actors: PersonUpdateManyWithoutMoviesPlayedInput
 }
 
@@ -554,6 +588,28 @@ input MovieWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Float
+  scoutbase_rating: Float
+
+  """All values that are not equal to given value."""
+  scoutbase_rating_not: Float
+
+  """All values that are contained in given list."""
+  scoutbase_rating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  scoutbase_rating_not_in: [Float!]
+
+  """All values less than the given value."""
+  scoutbase_rating_lt: Float
+
+  """All values less than or equal the given value."""
+  scoutbase_rating_lte: Float
+
+  """All values greater than the given value."""
+  scoutbase_rating_gt: Float
+
+  """All values greater than or equal the given value."""
+  scoutbase_rating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
