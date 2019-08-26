@@ -1,0 +1,29 @@
+type User {
+  id: ID! @id
+  username: String! @unique
+  password: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Movie {
+  id: ID! @id
+  title: String!
+  year: Int!
+  rating: Float!
+  actors: [Person!]! @relation(name: "MoviesPlayed")
+  directors: [Person!]! @relation(name: "MoviesDirected")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Person {
+  id: ID! @id
+  name: String!
+  birthday: String
+  country: String!
+  moviesPlayed: [Movie!]! @relation(name: "MoviesPlayed")
+  moviesDirected: [Movie!]! @relation(name: "MoviesDirected")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

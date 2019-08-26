@@ -10,8 +10,8 @@ type Movie {
   title: String!
   year: Int!
   rating: Float!
-  actors: [Person]!
-  directors: [Person]!
+  actors: [Person!]!
+  directors: [Person!]!
 }
 
 type Person {
@@ -19,6 +19,8 @@ type Person {
   name: String!
   birthday: String
   country: String!
+  moviesPlayed: [Movie!]!
+  moviesDirected: [Movie!]!
 }
 
 type User {
