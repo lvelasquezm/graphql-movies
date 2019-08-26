@@ -5,7 +5,10 @@ import prisma from './prisma';
 export default new GraphQLServer({
   typeDefs: './src/typeDefs/schema.graphql',
   resolvers,
-  context: {
-    prisma
+  context(request) {
+    return {
+      prisma,
+      request
+    };
   }
 });

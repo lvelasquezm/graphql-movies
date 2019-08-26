@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'; 
 import jwt from 'jsonwebtoken'; 
-import messages from '../../utils/messages';
+import messages from '../../utils';
 
 export default async function login(parent, args, { prisma }, info) {
   const { username, password } = args;
