@@ -20,7 +20,7 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "start": "env-cmd -f ./config/prod.env node dist/index.js",
+    "start": "node dist/index.js",
     "start:local": "env-cmd -f ./config/local.env nodemon index.js --ext js,graphql --exec babel-node",
     "heroku-postbuild": "babel index.js --out-dir dist && babel src --out-dir dist/src --copy-files",
     "get-schema": "prisma generate",
