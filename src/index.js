@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import { GraphQLServer } from 'graphql-yoga';
 import resolvers from './resolvers';
 import prisma from './prisma';

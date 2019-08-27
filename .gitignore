@@ -8,3 +8,6 @@ yarn-error.log
 
 # env
 config/prod.env
+
+# dist/build
+dist
