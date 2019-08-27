@@ -15,11 +15,12 @@
     "babel-cli": "6.26.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "graphql-cli": "2.16.4",
     "nodemon": "^1.19.1"
   },
   "scripts": {
     "start": "nodemon index.js --ext js,graphql --exec babel-node",
-    "get-schema": "graphql get-schema -p prisma"
+    "get-schema": "prisma generate",
+    "deploy:prod": "prisma deploy -e config/prod.env",
+    "deploy:local": "prisma deploy -e config/local.env"
   }
 }

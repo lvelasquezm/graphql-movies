@@ -1,6 +1,3 @@
-# source: http://localhost:4466
-# timestamp: Mon Aug 26 2019 16:29:54 GMT-0600 (Central Standard Time)
-
 type AggregateMovie {
   count: Int!
 }
@@ -14,22 +11,14 @@ type AggregateUser {
 }
 
 type BatchPayload {
-  """The number of nodes that have been affected by the Batch operation."""
   count: Long!
 }
 
 scalar DateTime
 
-"""Raw JSON value"""
-scalar Json
-
-"""
-The `Long` scalar type represents non-fractional signed whole numeric values.
-Long can represent values between -(2^63) and 2^63 - 1.
-"""
 scalar Long
 
-type Movie implements Node {
+type Movie {
   id: ID!
   title: String!
   year: Int!
@@ -41,12 +30,8 @@ type Movie implements Node {
   updatedAt: DateTime!
 }
 
-"""A connection to a list of items."""
 type MovieConnection {
-  """Information to aid in pagination."""
   pageInfo: PageInfo!
-
-  """A list of edges."""
   edges: [MovieEdge]!
   aggregate: AggregateMovie!
 }
@@ -89,12 +74,8 @@ input MovieCreateWithoutDirectorsInput {
   actors: PersonCreateManyWithoutMoviesPlayedInput
 }
 
-"""An edge in a connection."""
 type MovieEdge {
-  """The item at the end of the edge."""
   node: Movie!
-
-  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -126,204 +107,77 @@ type MoviePreviousValues {
 }
 
 input MovieScalarWhereInput {
-  """Logical AND on all given filters."""
-  AND: [MovieScalarWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [MovieScalarWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [MovieScalarWhereInput!]
   id: ID
-
-  """All values that are not equal to given value."""
   id_not: ID
-
-  """All values that are contained in given list."""
   id_in: [ID!]
-
-  """All values that are not contained in given list."""
   id_not_in: [ID!]
-
-  """All values less than the given value."""
   id_lt: ID
-
-  """All values less than or equal the given value."""
   id_lte: ID
-
-  """All values greater than the given value."""
   id_gt: ID
-
-  """All values greater than or equal the given value."""
   id_gte: ID
-
-  """All values containing the given string."""
   id_contains: ID
-
-  """All values not containing the given string."""
   id_not_contains: ID
-
-  """All values starting with the given string."""
   id_starts_with: ID
-
-  """All values not starting with the given string."""
   id_not_starts_with: ID
-
-  """All values ending with the given string."""
   id_ends_with: ID
-
-  """All values not ending with the given string."""
   id_not_ends_with: ID
   title: String
-
-  """All values that are not equal to given value."""
   title_not: String
-
-  """All values that are contained in given list."""
   title_in: [String!]
-
-  """All values that are not contained in given list."""
   title_not_in: [String!]
-
-  """All values less than the given value."""
   title_lt: String
-
-  """All values less than or equal the given value."""
   title_lte: String
-
-  """All values greater than the given value."""
   title_gt: String
-
-  """All values greater than or equal the given value."""
   title_gte: String
-
-  """All values containing the given string."""
   title_contains: String
-
-  """All values not containing the given string."""
   title_not_contains: String
-
-  """All values starting with the given string."""
   title_starts_with: String
-
-  """All values not starting with the given string."""
   title_not_starts_with: String
-
-  """All values ending with the given string."""
   title_ends_with: String
-
-  """All values not ending with the given string."""
   title_not_ends_with: String
   year: Int
-
-  """All values that are not equal to given value."""
   year_not: Int
-
-  """All values that are contained in given list."""
   year_in: [Int!]
-
-  """All values that are not contained in given list."""
   year_not_in: [Int!]
-
-  """All values less than the given value."""
   year_lt: Int
-
-  """All values less than or equal the given value."""
   year_lte: Int
-
-  """All values greater than the given value."""
   year_gt: Int
-
-  """All values greater than or equal the given value."""
   year_gte: Int
   rating: Float
-
-  """All values that are not equal to given value."""
   rating_not: Float
-
-  """All values that are contained in given list."""
   rating_in: [Float!]
-
-  """All values that are not contained in given list."""
   rating_not_in: [Float!]
-
-  """All values less than the given value."""
   rating_lt: Float
-
-  """All values less than or equal the given value."""
   rating_lte: Float
-
-  """All values greater than the given value."""
   rating_gt: Float
-
-  """All values greater than or equal the given value."""
   rating_gte: Float
   scoutbase_rating: Float
-
-  """All values that are not equal to given value."""
   scoutbase_rating_not: Float
-
-  """All values that are contained in given list."""
   scoutbase_rating_in: [Float!]
-
-  """All values that are not contained in given list."""
   scoutbase_rating_not_in: [Float!]
-
-  """All values less than the given value."""
   scoutbase_rating_lt: Float
-
-  """All values less than or equal the given value."""
   scoutbase_rating_lte: Float
-
-  """All values greater than the given value."""
   scoutbase_rating_gt: Float
-
-  """All values greater than or equal the given value."""
   scoutbase_rating_gte: Float
   createdAt: DateTime
-
-  """All values that are not equal to given value."""
   createdAt_not: DateTime
-
-  """All values that are contained in given list."""
   createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   createdAt_lte: DateTime
-
-  """All values greater than the given value."""
   createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
-
-  """All values that are not equal to given value."""
   updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
   updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  AND: [MovieScalarWhereInput!]
+  OR: [MovieScalarWhereInput!]
+  NOT: [MovieScalarWhereInput!]
 }
 
 type MovieSubscriptionPayload {
@@ -334,35 +188,14 @@ type MovieSubscriptionPayload {
 }
 
 input MovieSubscriptionWhereInput {
-  """Logical AND on all given filters."""
-  AND: [MovieSubscriptionWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [MovieSubscriptionWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [MovieSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
   mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
   updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
   updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
   updatedFields_contains_some: [String!]
   node: MovieWhereInput
+  AND: [MovieSubscriptionWhereInput!]
+  OR: [MovieSubscriptionWhereInput!]
+  NOT: [MovieSubscriptionWhereInput!]
 }
 
 input MovieUpdateInput {
@@ -390,26 +223,26 @@ input MovieUpdateManyMutationInput {
 
 input MovieUpdateManyWithoutActorsInput {
   create: [MovieCreateWithoutActorsInput!]
+  delete: [MovieWhereUniqueInput!]
   connect: [MovieWhereUniqueInput!]
   set: [MovieWhereUniqueInput!]
   disconnect: [MovieWhereUniqueInput!]
-  delete: [MovieWhereUniqueInput!]
   update: [MovieUpdateWithWhereUniqueWithoutActorsInput!]
-  updateMany: [MovieUpdateManyWithWhereNestedInput!]
-  deleteMany: [MovieScalarWhereInput!]
   upsert: [MovieUpsertWithWhereUniqueWithoutActorsInput!]
+  deleteMany: [MovieScalarWhereInput!]
+  updateMany: [MovieUpdateManyWithWhereNestedInput!]
 }
 
 input MovieUpdateManyWithoutDirectorsInput {
   create: [MovieCreateWithoutDirectorsInput!]
+  delete: [MovieWhereUniqueInput!]
   connect: [MovieWhereUniqueInput!]
   set: [MovieWhereUniqueInput!]
   disconnect: [MovieWhereUniqueInput!]
-  delete: [MovieWhereUniqueInput!]
   update: [MovieUpdateWithWhereUniqueWithoutDirectorsInput!]
-  updateMany: [MovieUpdateManyWithWhereNestedInput!]
-  deleteMany: [MovieScalarWhereInput!]
   upsert: [MovieUpsertWithWhereUniqueWithoutDirectorsInput!]
+  deleteMany: [MovieScalarWhereInput!]
+  updateMany: [MovieUpdateManyWithWhereNestedInput!]
 }
 
 input MovieUpdateManyWithWhereNestedInput {
@@ -456,210 +289,83 @@ input MovieUpsertWithWhereUniqueWithoutDirectorsInput {
 }
 
 input MovieWhereInput {
-  """Logical AND on all given filters."""
-  AND: [MovieWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [MovieWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [MovieWhereInput!]
   id: ID
-
-  """All values that are not equal to given value."""
   id_not: ID
-
-  """All values that are contained in given list."""
   id_in: [ID!]
-
-  """All values that are not contained in given list."""
   id_not_in: [ID!]
-
-  """All values less than the given value."""
   id_lt: ID
-
-  """All values less than or equal the given value."""
   id_lte: ID
-
-  """All values greater than the given value."""
   id_gt: ID
-
-  """All values greater than or equal the given value."""
   id_gte: ID
-
-  """All values containing the given string."""
   id_contains: ID
-
-  """All values not containing the given string."""
   id_not_contains: ID
-
-  """All values starting with the given string."""
   id_starts_with: ID
-
-  """All values not starting with the given string."""
   id_not_starts_with: ID
-
-  """All values ending with the given string."""
   id_ends_with: ID
-
-  """All values not ending with the given string."""
   id_not_ends_with: ID
   title: String
-
-  """All values that are not equal to given value."""
   title_not: String
-
-  """All values that are contained in given list."""
   title_in: [String!]
-
-  """All values that are not contained in given list."""
   title_not_in: [String!]
-
-  """All values less than the given value."""
   title_lt: String
-
-  """All values less than or equal the given value."""
   title_lte: String
-
-  """All values greater than the given value."""
   title_gt: String
-
-  """All values greater than or equal the given value."""
   title_gte: String
-
-  """All values containing the given string."""
   title_contains: String
-
-  """All values not containing the given string."""
   title_not_contains: String
-
-  """All values starting with the given string."""
   title_starts_with: String
-
-  """All values not starting with the given string."""
   title_not_starts_with: String
-
-  """All values ending with the given string."""
   title_ends_with: String
-
-  """All values not ending with the given string."""
   title_not_ends_with: String
   year: Int
-
-  """All values that are not equal to given value."""
   year_not: Int
-
-  """All values that are contained in given list."""
   year_in: [Int!]
-
-  """All values that are not contained in given list."""
   year_not_in: [Int!]
-
-  """All values less than the given value."""
   year_lt: Int
-
-  """All values less than or equal the given value."""
   year_lte: Int
-
-  """All values greater than the given value."""
   year_gt: Int
-
-  """All values greater than or equal the given value."""
   year_gte: Int
   rating: Float
-
-  """All values that are not equal to given value."""
   rating_not: Float
-
-  """All values that are contained in given list."""
   rating_in: [Float!]
-
-  """All values that are not contained in given list."""
   rating_not_in: [Float!]
-
-  """All values less than the given value."""
   rating_lt: Float
-
-  """All values less than or equal the given value."""
   rating_lte: Float
-
-  """All values greater than the given value."""
   rating_gt: Float
-
-  """All values greater than or equal the given value."""
   rating_gte: Float
   scoutbase_rating: Float
-
-  """All values that are not equal to given value."""
   scoutbase_rating_not: Float
-
-  """All values that are contained in given list."""
   scoutbase_rating_in: [Float!]
-
-  """All values that are not contained in given list."""
   scoutbase_rating_not_in: [Float!]
-
-  """All values less than the given value."""
   scoutbase_rating_lt: Float
-
-  """All values less than or equal the given value."""
   scoutbase_rating_lte: Float
-
-  """All values greater than the given value."""
   scoutbase_rating_gt: Float
-
-  """All values greater than or equal the given value."""
   scoutbase_rating_gte: Float
-  createdAt: DateTime
-
-  """All values that are not equal to given value."""
-  createdAt_not: DateTime
-
-  """All values that are contained in given list."""
-  createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  createdAt_lte: DateTime
-
-  """All values greater than the given value."""
-  createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-
-  """All values that are not equal to given value."""
-  updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
-  updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
-  updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  updatedAt_gte: DateTime
   actors_every: PersonWhereInput
   actors_some: PersonWhereInput
   actors_none: PersonWhereInput
   directors_every: PersonWhereInput
   directors_some: PersonWhereInput
   directors_none: PersonWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [MovieWhereInput!]
+  OR: [MovieWhereInput!]
+  NOT: [MovieWhereInput!]
 }
 
 input MovieWhereUniqueInput {
@@ -667,25 +373,24 @@ input MovieWhereUniqueInput {
 }
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
   createMovie(data: MovieCreateInput!): Movie!
-  createPerson(data: PersonCreateInput!): Person!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateMovie(data: MovieUpdateInput!, where: MovieWhereUniqueInput!): Movie
-  updatePerson(data: PersonUpdateInput!, where: PersonWhereUniqueInput!): Person
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteMovie(where: MovieWhereUniqueInput!): Movie
-  deletePerson(where: PersonWhereUniqueInput!): Person
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertMovie(where: MovieWhereUniqueInput!, create: MovieCreateInput!, update: MovieUpdateInput!): Movie!
-  upsertPerson(where: PersonWhereUniqueInput!, create: PersonCreateInput!, update: PersonUpdateInput!): Person!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyMovies(data: MovieUpdateManyMutationInput!, where: MovieWhereInput): BatchPayload!
-  updateManyPersons(data: PersonUpdateManyMutationInput!, where: PersonWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  upsertMovie(where: MovieWhereUniqueInput!, create: MovieCreateInput!, update: MovieUpdateInput!): Movie!
+  deleteMovie(where: MovieWhereUniqueInput!): Movie
   deleteManyMovies(where: MovieWhereInput): BatchPayload!
+  createPerson(data: PersonCreateInput!): Person!
+  updatePerson(data: PersonUpdateInput!, where: PersonWhereUniqueInput!): Person
+  updateManyPersons(data: PersonUpdateManyMutationInput!, where: PersonWhereInput): BatchPayload!
+  upsertPerson(where: PersonWhereUniqueInput!, create: PersonCreateInput!, update: PersonUpdateInput!): Person!
+  deletePerson(where: PersonWhereUniqueInput!): Person
   deleteManyPersons(where: PersonWhereInput): BatchPayload!
-  executeRaw(database: PrismaDatabase, query: String!): Json!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -694,28 +399,18 @@ enum MutationType {
   DELETED
 }
 
-"""An object with an ID"""
 interface Node {
-  """The id of the object."""
   id: ID!
 }
 
-"""Information about pagination in a connection."""
 type PageInfo {
-  """When paginating forwards, are there more items?"""
   hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
   hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
   startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
   endCursor: String
 }
 
-type Person implements Node {
+type Person {
   id: ID!
   name: String!
   birthday: String
@@ -726,12 +421,8 @@ type Person implements Node {
   updatedAt: DateTime!
 }
 
-"""A connection to a list of items."""
 type PersonConnection {
-  """Information to aid in pagination."""
   pageInfo: PageInfo!
-
-  """A list of edges."""
   edges: [PersonEdge]!
   aggregate: AggregatePerson!
 }
@@ -771,12 +462,8 @@ input PersonCreateWithoutMoviesPlayedInput {
   moviesDirected: MovieCreateManyWithoutDirectorsInput
 }
 
-"""An edge in a connection."""
 type PersonEdge {
-  """The item at the end of the edge."""
   node: Person!
-
-  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -805,218 +492,81 @@ type PersonPreviousValues {
 }
 
 input PersonScalarWhereInput {
-  """Logical AND on all given filters."""
-  AND: [PersonScalarWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [PersonScalarWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [PersonScalarWhereInput!]
   id: ID
-
-  """All values that are not equal to given value."""
   id_not: ID
-
-  """All values that are contained in given list."""
   id_in: [ID!]
-
-  """All values that are not contained in given list."""
   id_not_in: [ID!]
-
-  """All values less than the given value."""
   id_lt: ID
-
-  """All values less than or equal the given value."""
   id_lte: ID
-
-  """All values greater than the given value."""
   id_gt: ID
-
-  """All values greater than or equal the given value."""
   id_gte: ID
-
-  """All values containing the given string."""
   id_contains: ID
-
-  """All values not containing the given string."""
   id_not_contains: ID
-
-  """All values starting with the given string."""
   id_starts_with: ID
-
-  """All values not starting with the given string."""
   id_not_starts_with: ID
-
-  """All values ending with the given string."""
   id_ends_with: ID
-
-  """All values not ending with the given string."""
   id_not_ends_with: ID
   name: String
-
-  """All values that are not equal to given value."""
   name_not: String
-
-  """All values that are contained in given list."""
   name_in: [String!]
-
-  """All values that are not contained in given list."""
   name_not_in: [String!]
-
-  """All values less than the given value."""
   name_lt: String
-
-  """All values less than or equal the given value."""
   name_lte: String
-
-  """All values greater than the given value."""
   name_gt: String
-
-  """All values greater than or equal the given value."""
   name_gte: String
-
-  """All values containing the given string."""
   name_contains: String
-
-  """All values not containing the given string."""
   name_not_contains: String
-
-  """All values starting with the given string."""
   name_starts_with: String
-
-  """All values not starting with the given string."""
   name_not_starts_with: String
-
-  """All values ending with the given string."""
   name_ends_with: String
-
-  """All values not ending with the given string."""
   name_not_ends_with: String
   birthday: String
-
-  """All values that are not equal to given value."""
   birthday_not: String
-
-  """All values that are contained in given list."""
   birthday_in: [String!]
-
-  """All values that are not contained in given list."""
   birthday_not_in: [String!]
-
-  """All values less than the given value."""
   birthday_lt: String
-
-  """All values less than or equal the given value."""
   birthday_lte: String
-
-  """All values greater than the given value."""
   birthday_gt: String
-
-  """All values greater than or equal the given value."""
   birthday_gte: String
-
-  """All values containing the given string."""
   birthday_contains: String
-
-  """All values not containing the given string."""
   birthday_not_contains: String
-
-  """All values starting with the given string."""
   birthday_starts_with: String
-
-  """All values not starting with the given string."""
   birthday_not_starts_with: String
-
-  """All values ending with the given string."""
   birthday_ends_with: String
-
-  """All values not ending with the given string."""
   birthday_not_ends_with: String
   country: String
-
-  """All values that are not equal to given value."""
   country_not: String
-
-  """All values that are contained in given list."""
   country_in: [String!]
-
-  """All values that are not contained in given list."""
   country_not_in: [String!]
-
-  """All values less than the given value."""
   country_lt: String
-
-  """All values less than or equal the given value."""
   country_lte: String
-
-  """All values greater than the given value."""
   country_gt: String
-
-  """All values greater than or equal the given value."""
   country_gte: String
-
-  """All values containing the given string."""
   country_contains: String
-
-  """All values not containing the given string."""
   country_not_contains: String
-
-  """All values starting with the given string."""
   country_starts_with: String
-
-  """All values not starting with the given string."""
   country_not_starts_with: String
-
-  """All values ending with the given string."""
   country_ends_with: String
-
-  """All values not ending with the given string."""
   country_not_ends_with: String
   createdAt: DateTime
-
-  """All values that are not equal to given value."""
   createdAt_not: DateTime
-
-  """All values that are contained in given list."""
   createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   createdAt_lte: DateTime
-
-  """All values greater than the given value."""
   createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
-
-  """All values that are not equal to given value."""
   updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
   updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  AND: [PersonScalarWhereInput!]
+  OR: [PersonScalarWhereInput!]
+  NOT: [PersonScalarWhereInput!]
 }
 
 type PersonSubscriptionPayload {
@@ -1027,35 +577,14 @@ type PersonSubscriptionPayload {
 }
 
 input PersonSubscriptionWhereInput {
-  """Logical AND on all given filters."""
-  AND: [PersonSubscriptionWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [PersonSubscriptionWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [PersonSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
   mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
   updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
   updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
   updatedFields_contains_some: [String!]
   node: PersonWhereInput
+  AND: [PersonSubscriptionWhereInput!]
+  OR: [PersonSubscriptionWhereInput!]
+  NOT: [PersonSubscriptionWhereInput!]
 }
 
 input PersonUpdateInput {
@@ -1080,26 +609,26 @@ input PersonUpdateManyMutationInput {
 
 input PersonUpdateManyWithoutMoviesDirectedInput {
   create: [PersonCreateWithoutMoviesDirectedInput!]
+  delete: [PersonWhereUniqueInput!]
   connect: [PersonWhereUniqueInput!]
   set: [PersonWhereUniqueInput!]
   disconnect: [PersonWhereUniqueInput!]
-  delete: [PersonWhereUniqueInput!]
   update: [PersonUpdateWithWhereUniqueWithoutMoviesDirectedInput!]
-  updateMany: [PersonUpdateManyWithWhereNestedInput!]
-  deleteMany: [PersonScalarWhereInput!]
   upsert: [PersonUpsertWithWhereUniqueWithoutMoviesDirectedInput!]
+  deleteMany: [PersonScalarWhereInput!]
+  updateMany: [PersonUpdateManyWithWhereNestedInput!]
 }
 
 input PersonUpdateManyWithoutMoviesPlayedInput {
   create: [PersonCreateWithoutMoviesPlayedInput!]
+  delete: [PersonWhereUniqueInput!]
   connect: [PersonWhereUniqueInput!]
   set: [PersonWhereUniqueInput!]
   disconnect: [PersonWhereUniqueInput!]
-  delete: [PersonWhereUniqueInput!]
   update: [PersonUpdateWithWhereUniqueWithoutMoviesPlayedInput!]
-  updateMany: [PersonUpdateManyWithWhereNestedInput!]
-  deleteMany: [PersonScalarWhereInput!]
   upsert: [PersonUpsertWithWhereUniqueWithoutMoviesPlayedInput!]
+  deleteMany: [PersonScalarWhereInput!]
+  updateMany: [PersonUpdateManyWithWhereNestedInput!]
 }
 
 input PersonUpdateManyWithWhereNestedInput {
@@ -1144,259 +673,113 @@ input PersonUpsertWithWhereUniqueWithoutMoviesPlayedInput {
 }
 
 input PersonWhereInput {
-  """Logical AND on all given filters."""
-  AND: [PersonWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [PersonWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [PersonWhereInput!]
   id: ID
-
-  """All values that are not equal to given value."""
   id_not: ID
-
-  """All values that are contained in given list."""
   id_in: [ID!]
-
-  """All values that are not contained in given list."""
   id_not_in: [ID!]
-
-  """All values less than the given value."""
   id_lt: ID
-
-  """All values less than or equal the given value."""
   id_lte: ID
-
-  """All values greater than the given value."""
   id_gt: ID
-
-  """All values greater than or equal the given value."""
   id_gte: ID
-
-  """All values containing the given string."""
   id_contains: ID
-
-  """All values not containing the given string."""
   id_not_contains: ID
-
-  """All values starting with the given string."""
   id_starts_with: ID
-
-  """All values not starting with the given string."""
   id_not_starts_with: ID
-
-  """All values ending with the given string."""
   id_ends_with: ID
-
-  """All values not ending with the given string."""
   id_not_ends_with: ID
   name: String
-
-  """All values that are not equal to given value."""
   name_not: String
-
-  """All values that are contained in given list."""
   name_in: [String!]
-
-  """All values that are not contained in given list."""
   name_not_in: [String!]
-
-  """All values less than the given value."""
   name_lt: String
-
-  """All values less than or equal the given value."""
   name_lte: String
-
-  """All values greater than the given value."""
   name_gt: String
-
-  """All values greater than or equal the given value."""
   name_gte: String
-
-  """All values containing the given string."""
   name_contains: String
-
-  """All values not containing the given string."""
   name_not_contains: String
-
-  """All values starting with the given string."""
   name_starts_with: String
-
-  """All values not starting with the given string."""
   name_not_starts_with: String
-
-  """All values ending with the given string."""
   name_ends_with: String
-
-  """All values not ending with the given string."""
   name_not_ends_with: String
   birthday: String
-
-  """All values that are not equal to given value."""
   birthday_not: String
-
-  """All values that are contained in given list."""
   birthday_in: [String!]
-
-  """All values that are not contained in given list."""
   birthday_not_in: [String!]
-
-  """All values less than the given value."""
   birthday_lt: String
-
-  """All values less than or equal the given value."""
   birthday_lte: String
-
-  """All values greater than the given value."""
   birthday_gt: String
-
-  """All values greater than or equal the given value."""
   birthday_gte: String
-
-  """All values containing the given string."""
   birthday_contains: String
-
-  """All values not containing the given string."""
   birthday_not_contains: String
-
-  """All values starting with the given string."""
   birthday_starts_with: String
-
-  """All values not starting with the given string."""
   birthday_not_starts_with: String
-
-  """All values ending with the given string."""
   birthday_ends_with: String
-
-  """All values not ending with the given string."""
   birthday_not_ends_with: String
   country: String
-
-  """All values that are not equal to given value."""
   country_not: String
-
-  """All values that are contained in given list."""
   country_in: [String!]
-
-  """All values that are not contained in given list."""
   country_not_in: [String!]
-
-  """All values less than the given value."""
   country_lt: String
-
-  """All values less than or equal the given value."""
   country_lte: String
-
-  """All values greater than the given value."""
   country_gt: String
-
-  """All values greater than or equal the given value."""
   country_gte: String
-
-  """All values containing the given string."""
   country_contains: String
-
-  """All values not containing the given string."""
   country_not_contains: String
-
-  """All values starting with the given string."""
   country_starts_with: String
-
-  """All values not starting with the given string."""
   country_not_starts_with: String
-
-  """All values ending with the given string."""
   country_ends_with: String
-
-  """All values not ending with the given string."""
   country_not_ends_with: String
-  createdAt: DateTime
-
-  """All values that are not equal to given value."""
-  createdAt_not: DateTime
-
-  """All values that are contained in given list."""
-  createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  createdAt_lte: DateTime
-
-  """All values greater than the given value."""
-  createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-
-  """All values that are not equal to given value."""
-  updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
-  updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
-  updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  updatedAt_gte: DateTime
   moviesPlayed_every: MovieWhereInput
   moviesPlayed_some: MovieWhereInput
   moviesPlayed_none: MovieWhereInput
   moviesDirected_every: MovieWhereInput
   moviesDirected_some: MovieWhereInput
   moviesDirected_none: MovieWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonWhereInput!]
+  OR: [PersonWhereInput!]
+  NOT: [PersonWhereInput!]
 }
 
 input PersonWhereUniqueInput {
   id: ID
 }
 
-enum PrismaDatabase {
-  default
-}
-
 type Query {
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  movies(where: MovieWhereInput, orderBy: MovieOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Movie]!
-  persons(where: PersonWhereInput, orderBy: PersonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Person]!
-  user(where: UserWhereUniqueInput!): User
   movie(where: MovieWhereUniqueInput!): Movie
-  person(where: PersonWhereUniqueInput!): Person
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  movies(where: MovieWhereInput, orderBy: MovieOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Movie]!
   moviesConnection(where: MovieWhereInput, orderBy: MovieOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MovieConnection!
+  person(where: PersonWhereUniqueInput!): Person
+  persons(where: PersonWhereInput, orderBy: PersonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Person]!
   personsConnection(where: PersonWhereInput, orderBy: PersonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonConnection!
-
-  """Fetches an object given its ID"""
-  node(
-    """The ID of an object"""
-    id: ID!
-  ): Node
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
 }
 
 type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   movie(where: MovieSubscriptionWhereInput): MovieSubscriptionPayload
   person(where: PersonSubscriptionWhereInput): PersonSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
-type User implements Node {
+type User {
   id: ID!
   username: String!
   password: String!
@@ -1404,12 +787,8 @@ type User implements Node {
   updatedAt: DateTime!
 }
 
-"""A connection to a list of items."""
 type UserConnection {
-  """Information to aid in pagination."""
   pageInfo: PageInfo!
-
-  """A list of edges."""
   edges: [UserEdge]!
   aggregate: AggregateUser!
 }
@@ -1420,12 +799,8 @@ input UserCreateInput {
   password: String!
 }
 
-"""An edge in a connection."""
 type UserEdge {
-  """The item at the end of the edge."""
   node: User!
-
-  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -1458,35 +833,14 @@ type UserSubscriptionPayload {
 }
 
 input UserSubscriptionWhereInput {
-  """Logical AND on all given filters."""
-  AND: [UserSubscriptionWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [UserSubscriptionWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [UserSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
   mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
   updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
   updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
   updatedFields_contains_some: [String!]
   node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
 }
 
 input UserUpdateInput {
@@ -1500,178 +854,67 @@ input UserUpdateManyMutationInput {
 }
 
 input UserWhereInput {
-  """Logical AND on all given filters."""
-  AND: [UserWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [UserWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [UserWhereInput!]
   id: ID
-
-  """All values that are not equal to given value."""
   id_not: ID
-
-  """All values that are contained in given list."""
   id_in: [ID!]
-
-  """All values that are not contained in given list."""
   id_not_in: [ID!]
-
-  """All values less than the given value."""
   id_lt: ID
-
-  """All values less than or equal the given value."""
   id_lte: ID
-
-  """All values greater than the given value."""
   id_gt: ID
-
-  """All values greater than or equal the given value."""
   id_gte: ID
-
-  """All values containing the given string."""
   id_contains: ID
-
-  """All values not containing the given string."""
   id_not_contains: ID
-
-  """All values starting with the given string."""
   id_starts_with: ID
-
-  """All values not starting with the given string."""
   id_not_starts_with: ID
-
-  """All values ending with the given string."""
   id_ends_with: ID
-
-  """All values not ending with the given string."""
   id_not_ends_with: ID
   username: String
-
-  """All values that are not equal to given value."""
   username_not: String
-
-  """All values that are contained in given list."""
   username_in: [String!]
-
-  """All values that are not contained in given list."""
   username_not_in: [String!]
-
-  """All values less than the given value."""
   username_lt: String
-
-  """All values less than or equal the given value."""
   username_lte: String
-
-  """All values greater than the given value."""
   username_gt: String
-
-  """All values greater than or equal the given value."""
   username_gte: String
-
-  """All values containing the given string."""
   username_contains: String
-
-  """All values not containing the given string."""
   username_not_contains: String
-
-  """All values starting with the given string."""
   username_starts_with: String
-
-  """All values not starting with the given string."""
   username_not_starts_with: String
-
-  """All values ending with the given string."""
   username_ends_with: String
-
-  """All values not ending with the given string."""
   username_not_ends_with: String
   password: String
-
-  """All values that are not equal to given value."""
   password_not: String
-
-  """All values that are contained in given list."""
   password_in: [String!]
-
-  """All values that are not contained in given list."""
   password_not_in: [String!]
-
-  """All values less than the given value."""
   password_lt: String
-
-  """All values less than or equal the given value."""
   password_lte: String
-
-  """All values greater than the given value."""
   password_gt: String
-
-  """All values greater than or equal the given value."""
   password_gte: String
-
-  """All values containing the given string."""
   password_contains: String
-
-  """All values not containing the given string."""
   password_not_contains: String
-
-  """All values starting with the given string."""
   password_starts_with: String
-
-  """All values not starting with the given string."""
   password_not_starts_with: String
-
-  """All values ending with the given string."""
   password_ends_with: String
-
-  """All values not ending with the given string."""
   password_not_ends_with: String
   createdAt: DateTime
-
-  """All values that are not equal to given value."""
   createdAt_not: DateTime
-
-  """All values that are contained in given list."""
   createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   createdAt_lte: DateTime
-
-  """All values greater than the given value."""
   createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
-
-  """All values that are not equal to given value."""
   updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
   updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
   updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
   updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
 }
 
 input UserWhereUniqueInput {
