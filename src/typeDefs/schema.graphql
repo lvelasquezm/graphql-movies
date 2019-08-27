@@ -29,7 +29,7 @@ type Person {
 type User {
   id: ID!
   username: String!
-  password: String!
+  password: String
 }
 
 type AuthPayload {
