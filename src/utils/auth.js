@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const generateJWT = payload => {
-  return jwt.sign(payload, 'pkYuq9H3', { expiresIn: '7 days' })
+  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7 days' })
 };
 
 export const getAuthUsername = request => {
@@ -11,7 +11,7 @@ export const getAuthUsername = request => {
   if (!authHeader) return null;
 
   const token = authHeader.replace('Bearer ', '');
-  const jwtDecoded = jwt.verify(token, 'pkYuq9H3');
+  const jwtDecoded = jwt.verify(token, process.env.JWT_SECRET);
 
   // Return null if JWT could not be decoded
   if (!jwtDecoded) return null;
