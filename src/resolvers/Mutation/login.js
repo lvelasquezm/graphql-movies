@@ -1,6 +1,5 @@
-import bcrypt from 'bcryptjs'; 
-import jwt from 'jsonwebtoken'; 
-import messages from '../../utils';
+import bcrypt from 'bcryptjs';  
+import { messages, authUtils } from '../../utils';
 
 export default async function login(parent, args, { prisma }, info) {
   const { username, password } = args;
@@ -21,7 +20,7 @@ export default async function login(parent, args, { prisma }, info) {
 
   // Return user with JWT in place
   return {
-    token: jwt.sign({ username: user.username }, 'pkYuq9H3'),
+    token: authUtils.generateJWT({ username }),
     user
   };
 }

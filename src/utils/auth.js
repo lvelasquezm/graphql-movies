@@ -1,5 +1,9 @@
 import jwt from 'jsonwebtoken';
 
+export const generateJWT = payload => {
+  return jwt.sign(payload, 'pkYuq9H3', { expiresIn: '7 days' })
+};
+
 export const getAuthUsername = request => {
   const authHeader = request.request.headers.authorization;
 
