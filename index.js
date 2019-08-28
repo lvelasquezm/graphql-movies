@@ -1,5 +1,11 @@
 import graphqlServer from './src';
 
-graphqlServer.start({ port: process.env.PORT || 4000 }, () => {
+const options = {
+  port: process.env.PORT || 4000,
+  playground: '/',
+  endpoint: '/graphql'
+};
+
+graphqlServer.start(options, () => {
   console.log('The server is up!');
 });
