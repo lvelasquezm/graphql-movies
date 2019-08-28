@@ -1,15 +1,4 @@
 import '@babel/polyfill/noConflict';
-import { GraphQLServer } from 'graphql-yoga';
-import resolvers from './resolvers';
-import prisma from './prisma';
+import server from './server';
 
-export default new GraphQLServer({
-  typeDefs: './src/typeDefs/schema.graphql',
-  resolvers,
-  context(request) {
-    return {
-      prisma,
-      request
-    };
-  }
-});
+export default server;
