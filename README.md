@@ -48,6 +48,8 @@ query {
   }
 }
 ```
+Additionaly, logged in users can query an auth-based field called `scoutbase_rating`
+(users not logged in can still query that field but they will get `null`)
 - `createUser` mutation: Exposes a method for registering a new user into the app.
 The mutation returns a `token` property which is a JSON Web Token ([docs](https://jwt.io/))
 so authenticated users can access private features on the app. This query can be accessed like this:
