@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import prisma from '../../src/prisma';
 
 export default async () => {
@@ -10,7 +11,7 @@ export default async () => {
   await prisma.mutation.createUser({
     data: {
       username: "firsttestuser",
-      password: "firsttestpassword"
+      password: bcrypt.hashSync("firsttestpassword")
     }
   });
 

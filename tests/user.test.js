@@ -1,5 +1,5 @@
 import 'cross-fetch/polyfill';
-import ApolloBoost, { gql } from 'apollo-boost';
+import ApolloBoost from 'apollo-boost';
 import prisma from '../src/prisma';
 
 import seed from './utils/seed';
