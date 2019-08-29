@@ -15,3 +15,18 @@ export const createUser = (username, password) => gql`
     }
   }
 `;
+
+export const login = (username, password) => gql`
+  mutation {
+    login(
+      username: "${username}"
+      password: "${password}"
+    ) {
+      token
+      user {
+        id
+        username
+      }
+    }
+  }
+`;
