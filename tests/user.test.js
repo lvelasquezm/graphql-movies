@@ -9,7 +9,7 @@ const client = new ApolloBoost({
   uri: 'http://localhost:4000'
 });
 
-// Seed database before all test case
+// Seed database before running all test cases
 beforeAll(seed);
 
 describe('User type', () => {
