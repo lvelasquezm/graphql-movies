@@ -1,18 +1,16 @@
 import 'cross-fetch/polyfill';
-import ApolloBoost from 'apollo-boost';
 import prisma from '../src/prisma';
 
-import seed from './utils/seed';
+import getClient from './utils/client';
+import seedDB from './utils/seed';
 import { createUser, login } from './utils/queries';
 
-const client = new ApolloBoost({
-  uri: 'http://localhost:4000'
-});
+const client = getClient();
 
 // Seed database before running all test cases
-beforeAll(seed);
+beforeAll(seedDB);
 
-describe('User type', () => {
+describe('Users', () => {
   it('should create a new user', async () => {
     const username = 'testuser123';
     const response = await client.mutate({
