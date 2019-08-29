@@ -28,10 +28,11 @@
     "start": "node dist/index.js",
     "start:local": "env-cmd -f ./config/local.env nodemon index.js --ext js,graphql --exec babel-node",
     "heroku-postbuild": "babel index.js --out-dir dist && babel src --out-dir dist/src --copy-files",
-    "test": "env-cmd -f ./config/test.env jest --watch"
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
   },
   "jest": {
     "globalSetup": "./tests/config/globalSetup.js",
-    "globalTeardown": "./tests/config/globalTeardown.js"
+    "globalTeardown": "./tests/config/globalTeardown.js",
+    "setupTestFrameworkScriptFile": "./tests/config/setup.js"
   }
 }
