@@ -1,5 +1,15 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import prisma from '../../src/prisma';
+
+const firstTestUser = {
+  input: {
+    username: "firsttestuser",
+    password: bcrypt.hashSync("firsttestpassword")
+  },
+  user: null,
+  jwt: null
+};
 
 export default async () => {
   // Delete all users, movies and persons from the test DB
@@ -8,12 +18,16 @@ export default async () => {
   await prisma.mutation.deleteManyPersons();
 
   // Create mock user on the test DB
-  await prisma.mutation.createUser({
+  firstTestUser.user = await prisma.mutation.createUser({
     data: {
       username: "firsttestuser",
       password: bcrypt.hashSync("firsttestpassword")
     }
   });
+  firstTestUser.jwt = jwt.sign(
+    { username: firstTestUser.user.username },
+    process.env.JWT_SECRET
+  );
 
   // Create mock movies on the test DB
   const titanic = await prisma.mutation.createMovie({
@@ -111,3 +125,5 @@ export default async () => {
     }
   });
 };
+
+export { firstTestUser }
