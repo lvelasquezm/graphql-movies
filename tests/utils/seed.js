@@ -6,6 +6,14 @@ export default async () => {
   await prisma.mutation.deleteManyMovies();
   await prisma.mutation.deleteManyPersons();
 
+  // Create mock user on the test DB
+  await prisma.mutation.createUser({
+    data: {
+      username: "firsttestuser",
+      password: "firsttestpassword"
+    }
+  });
+
   // Create mock movies on the test DB
   const titanic = await prisma.mutation.createMovie({
     data: {
