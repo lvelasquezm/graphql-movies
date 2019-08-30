@@ -30,3 +30,25 @@ export const login = (username, password) => gql`
     }
   }
 `;
+
+export const getMovies = gql`
+  query {
+    movies {
+      id
+      title
+      year
+      rating
+      scoutbase_rating
+      actors {
+        name
+        birthday
+        country
+      }
+      directors {
+        name
+        birthday
+        country
+      }
+    }
+  }
+`;

@@ -2,7 +2,7 @@ import 'cross-fetch/polyfill';
 import prisma from '../src/prisma';
 
 import getClient from './utils/client';
-import seedDB from './utils/seed';
+import seedDB, { firstTestUser } from './utils/seed';
 import { createUser, login } from './utils/queries';
 
 const client = getClient();
@@ -28,13 +28,13 @@ describe('Users', () => {
   it('should not create a user if username already exists', () => {
     expect(
       client.mutate({
-        mutation: createUser('firsttestuser', 'testpassword123')
+        mutation: createUser(firstTestUser.input.username, 'testpassword123')
       })
     ).rejects.toThrow();
   });
 
   it('should allow a user to login with username and password', async () => {
-    const username = 'firsttestuser';
+    const username = firstTestUser.input.username;
     const response = await client.mutate({
       mutation: login(username, 'firsttestpassword')
     });
@@ -54,7 +54,7 @@ describe('Users', () => {
   it('should not allow a user to login if password is wrong', () => {
     expect(
       client.mutate({
-        mutation: login('firsttestuser', 'wrongpassword')
+        mutation: login(firstTestUser.input.username, 'wrongpassword')
       })
     ).rejects.toThrow();
   });

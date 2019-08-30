@@ -19,10 +19,7 @@ export default async () => {
 
   // Create mock user on the test DB
   firstTestUser.user = await prisma.mutation.createUser({
-    data: {
-      username: "firsttestuser",
-      password: bcrypt.hashSync("firsttestpassword")
-    }
+    data: firstTestUser.input
   });
   firstTestUser.jwt = jwt.sign(
     { username: firstTestUser.user.username },
