@@ -122,6 +122,19 @@ See instalation instructions [here](https://docs.docker.com/install/)
 4. Run `yarn start:local` to start local/development GraphQL server
 5. The local GrapQL Playground should be running at `http://localhost:4000/`
 
+## Unit tests
+Unit tests were created using these packages:
+- [jest](https://jestjs.io/)
+- [apollo-boost](https://www.npmjs.com/package/apollo-boost)
+- [cross-fetch](https://github.com/lquixada/cross-fetch)
+- [graphql](https://www.npmjs.com/package/graphql)
+
+### Running unit tests
+Unit tests of this project runs using an isolated instance of the Postgres server,
+this means that there is a specific DB allocated for unit tests.
+- Run `prisma deploy --env-file ../config/test.env` to configure the test instance of the DB
+- Run `yarn test` to run all unit tests
+
 ## Making changes to the GraphQL schema
 1. Make your changes on the `src/typeDefs/schema.graphql` file which is used by the GraphQL server
 to return the data requested by the user. Changes goes from adding a new field to existing types
